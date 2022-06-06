@@ -208,7 +208,7 @@ Extract the file from the **zip** or pull the project from the **GitHub**
 Go to the project directory
 
 ```bash
-  cd backend
+  cd Backend
 ```
 
 
