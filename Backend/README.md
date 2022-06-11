@@ -24,18 +24,21 @@ There is one under the same level directory The contents of the files at the end
 (py39) [root@VM-12-10-centos home]# tree backend
 backend
 ├── celery_tasks
-│   ├── async_tasks.py
-│   ├── curb.py
 │   ├── draw_picture
 │   │   ├── draw.py
 │   │   ├── __init__.py
 │   │   ├── picture_template.py
 │   │   └── submit_path.py
+│   ├── async_tasks.py
+│   ├── curb.py
 │   ├── __init__.py
-│   └── result.py
+│   ├── result.py
+│   └── test.py
 ├── flask_front
 │   ├── app.py
+│   ├── static
 │   └── templates
+│       └── real
 ├── lib
 │   ├── config.py
 │   └── __init__.py
@@ -108,9 +111,13 @@ flask_front
 
   Create a server through the flask framework, and send real-time data and rendered environment trend graph to the front end
 
+- #### static
+
+  Save the necessary static files for the web page ,  such as : css, js ....
+
 - #### templates
 
-  Save environment trend chart file
+  Save environment trend chart file and static files for the web page
 
 ### lib
 
@@ -174,13 +181,14 @@ Erlang                    24.3.4
 
 #### Other dependencies
 
-```bash
+```basic
 asyncio                   3.4.3
 flask-cors                3.0.10
 flask-sqlalchemy          2.5.1 
 pyecharts                 1.9.1
 pymysql                   1.0.2
 flower                    1.0.0
+jinja2                    3.1.2 
 ```
 
 ### Port
@@ -215,7 +223,7 @@ Go to the project directory
 
 ### Set up the MySQL database
 
-You can run <u>***data.sql***</u> file, which is used to create databases and tables 
+You can run <u>***data.sql***</u> file, which is used to create tables 
 
 ⚠️this file only contains structures and no data
 

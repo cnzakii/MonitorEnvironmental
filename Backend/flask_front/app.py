@@ -3,10 +3,11 @@ import sys
 from wsgiref.simple_server import make_server
 
 sys.path.append('..')
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 from flask_cors import CORS
 from lib import set_config
 from celery_tasks import search, result
+import jinja2
 
 app = Flask(__name__, static_folder="templates")
 # Settings can be accessed across domains
@@ -69,6 +70,43 @@ def humidity_picture():
         return render_template(file_name)
     else:
         return "No picture"
+
+
+@app.route("/real/<name>")
+def web(name):
+    if name == "温度.html":
+        return render_template("real/温度.html")
+    elif name == "二氧化碳浓度.html":
+        return render_template("real/二氧化碳浓度.html")
+    elif name == "湿度.html":
+        return render_template("real/湿度.html")
+    elif name == "contact.html":
+        return render_template("real/contact.html")
+    elif name == "index.html":
+        return render_template("real/index.html")
+    else:
+        return "No"
+
+
+@app.route("/favicon.ico", methods=["GET", "HEAD"])
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='favicon.ico')
+
+
+@app.route("/static/<name>", methods=["GET", "HEAD"])
+def lib(name):
+    return send_from_directory(os.path.join(app.root_path, 'static'), name)
+
+
+@app.route("/static/images/<name>", methods=["GET", "HEAD"])
+def images_lib(name):
+    return send_from_directory(os.path.join(app.root_path, 'static/images'), name)
+
+
+@app.route("/static/js/<name>", methods=["GET", "HEAD"])
+def js_lib(name):
+    return send_from_directory(os.path.join(app.root_path, 'static/js'), name)
 
 
 if __name__ == "__main__":
