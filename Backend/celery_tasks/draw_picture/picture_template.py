@@ -11,8 +11,8 @@ def draw(x_data, y_data, background, title, y_name, file_name):
     root = config.read_config('other').get('flask_path')
     c = (
         Line(init_opts=opts.InitOpts(
-            width='1300px',
-            height='715px',
+            width='900px',
+            height='500px',
             page_title=title,
             bg_color=JsCode(background),
         )

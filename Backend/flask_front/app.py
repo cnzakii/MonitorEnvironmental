@@ -7,12 +7,32 @@ from flask import Flask, render_template, send_from_directory
 from flask_cors import CORS
 from lib import set_config
 from celery_tasks import search, result
-import jinja2
 
 app = Flask(__name__, static_folder="templates")
 # Settings can be accessed across domains
 CORS(app, supports_credentials=True)
 
+
+@app.route("/")
+@app.route("/index.html")
+def index():
+    return render_template("web/index.html")
+
+
+@app.route("/secondWeb/<name>")
+def web(name):
+    if name == "temperature.html":
+        return render_template("web/secondWeb/temperature.html")
+    elif name == "co2.html":
+        return render_template("web/secondWeb/co2.html")
+    elif name == "rh.html":
+        return render_template("web/secondWeb/rh.html")
+    elif name == "contact.html":
+        return render_template("web/secondWeb/contact.html")
+    elif name == "index.html":
+        return render_template("web/index.html")
+    else:
+        return "No"
 
 @app.route("/realTime")
 def real_time():
@@ -25,7 +45,7 @@ def real_time():
         data = d[len(d) - 1]
         data_dict = {'co2': data[0], 'temperature': data[1], 'humidity': data[2], 'time': data[3]}
     else:
-        data_dict = "There is no real-time data at the current time"
+        data_dict = "There is no web-time data at the current time"
     return data_dict
 
 
@@ -71,21 +91,6 @@ def humidity_picture():
     else:
         return "No picture"
 
-
-@app.route("/real/<name>")
-def web(name):
-    if name == "温度.html":
-        return render_template("real/温度.html")
-    elif name == "二氧化碳浓度.html":
-        return render_template("real/二氧化碳浓度.html")
-    elif name == "湿度.html":
-        return render_template("real/湿度.html")
-    elif name == "contact.html":
-        return render_template("real/contact.html")
-    elif name == "index.html":
-        return render_template("real/index.html")
-    else:
-        return "No"
 
 
 @app.route("/favicon.ico", methods=["GET", "HEAD"])

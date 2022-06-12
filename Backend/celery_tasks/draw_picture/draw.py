@@ -18,14 +18,19 @@ def task():
     # Receive the file path and check whether the file exists.
     # Only if it exists can it be added to the database
     temp = temp_pictures()
-    if os.path.exists(os.path.join(root, temp)):
-        arr.append(temp)
+    if temp != -1:
+        if os.path.exists(os.path.join(root, temp)):
+            arr.append(temp)
+
     co2 = co2_pictures()
-    if os.path.exists(os.path.join(root, co2)):
-        arr.append(co2)
+    if co2 != -1:
+        if os.path.exists(os.path.join(root, co2)):
+            arr.append(co2)
+
     rh = rh_pictures()
-    if os.path.exists(os.path.join(root, rh)):
-        arr.append(rh)
+    if rh != -1:
+        if os.path.exists(os.path.join(root, rh)):
+            arr.append(rh)
     if len(arr) == 3:
         submit_path.submit(root, arr)
     else:

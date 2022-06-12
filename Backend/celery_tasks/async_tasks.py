@@ -1,15 +1,16 @@
 import sys
 from celery import Celery
-
 sys.path.append('..')
 from lib import read_config
 
+# 读取配置
 d = read_config('rabbitmq')
-# 消息中间件引用的库
+
+
 broker = 'amqp://%s:%s@%s:%s/%s' % (d.get('user'), d.get('password'),
                                     d.get('host'), d.get('port'),
                                     d.get('v_host'))
-backend = 'rpc://'  # 运行结果引用的库
+backend = 'rpc://'
 cel = Celery('celery_tasks',
              broker=broker,
              backend=backend,

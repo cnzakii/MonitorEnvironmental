@@ -279,3 +279,33 @@ flask_path =
 
 
 
+## API Reference
+
+```http
+GET http://127.0.0.1:4350/<name>
+```
+
+| name                   | Description                              |
+| :--------------------- | :--------------------------------------- |
+| `None` or `index.html` | Website home page                        |
+| `realTime`             | Get real-time data                       |
+| `co2`                  | Obtain co2 long-term trend chart         |
+| `humidity`             | Obtain humidity long-term trend chart    |
+| `temperature`          | Obtain temperature long-term trend chart |
+
+```http
+GET http://127.0.0.1:4350/secondWeb/<name>
+```
+
+| name               | Description           |
+| :----------------- | :-------------------- |
+| `contact.html`     | Contact interface     |
+| `co2.html`         | co2 interface         |
+| `humidity.html`    | humidity interface    |
+| `temperature.html` | temperature interface |
+
+```http
+http://127.0.0.1:5555
+```
+
+Flower asynchronous task monitoring interface

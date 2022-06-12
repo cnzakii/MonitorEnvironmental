@@ -5,11 +5,14 @@ from lib.config import read_config
 
 # ************
 # 此文件中保存的对数据库的操作
-# 其中包括连接，关闭，添加，删除，查询操作
+# 其中包括连接，添加，删除，查询操作
+# Actions saved on the database in this file
+# Including connection, add, delete and query operations
 # ************
 
 
 # 批量添加，删除操作
+# Batch add and delete
 @cel.task(ignore_result=True)
 def update_arr(sql_arr):
     conn = connection()
@@ -23,6 +26,7 @@ def update_arr(sql_arr):
 
 
 # 添加，删除操作
+# Add, delete operation
 @cel.task(ignore_result=True)
 def update(sql):
     conn = connection()
@@ -34,6 +38,7 @@ def update(sql):
 
 
 # 查询操作
+# Select operation
 @cel.task
 def search(sql):
     conn = connection()
@@ -56,6 +61,7 @@ def a_search(sql):
 
 
 # 获取数据库配置
+# Get database configuration
 def get_config():
     d = read_config('mysql')
     host = d.get('host')

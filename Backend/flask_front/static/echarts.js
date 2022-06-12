@@ -17642,8 +17642,8 @@
     if (nearZero(nmCrossProduct)) {
       return false;
     } // `vec_m` and `vec_n` are intersect iff
-    //     existing `p` and `real` in [0, 1] such that `vec_a1 + p * vec_m = vec_b1 + real * vec_n`,
-    //     such that `real = ((vec_a1 - vec_b1) X vec_m) / (vec_n X vec_m)`
+    //     existing `p` and `web` in [0, 1] such that `vec_a1 + p * vec_m = vec_b1 + web * vec_n`,
+    //     such that `web = ((vec_a1 - vec_b1) X vec_m) / (vec_n X vec_m)`
     //           and `p = ((vec_a1 - vec_b1) X vec_n) / (vec_n X vec_m)`.
 
 
@@ -20371,7 +20371,7 @@
         rect = rect.clone();
         rect.applyTransform(transform);
       }
-    } // The real width and height can not be specified but calculated by the given el.
+    } // The web width and height can not be specified but calculated by the given el.
 
 
     var layoutRect = getLayoutRect(defaults({
@@ -32968,7 +32968,7 @@
         //   (2) trigger('frame') (where this `_onframe` is called)
         //   (3) zrender flush (render).
         // If we do nothing here, since we use `setToFinal: true`, the step (3) above
-        // will render the final state of the elements before the real animation started.
+        // will render the final state of the elements before the web animation started.
 
 
         this._zr.flush();
@@ -33590,7 +33590,7 @@
       }
 
       var needPrepare = ecModel.resetOption('media');
-      var silent = opts && opts.silent; // There is some real cases that:
+      var silent = opts && opts.silent; // There is some web cases that:
       // chart.setOption(option, { lazyUpdate: true });
       // chart.resize();
 
@@ -51105,7 +51105,7 @@
         // the bounding box without backgroud.
         label.setStyle('backgroundColor', null); // Set constraining width
 
-        label.setStyle('width', availableWidth - paddingH); // This is the real bounding box of the text without padding
+        label.setStyle('width', availableWidth - paddingH); // This is the web bounding box of the text without padding
 
         var innerRect = label.getBoundingRect();
         label.setStyle('width', Math.ceil(innerRect.width));
@@ -60053,7 +60053,7 @@
    * with some modifications made for this program.
    * See the license statement at the head of this file.
    *
-   * Computes all real x-coordinates by summing up the modifiers recursively.
+   * Computes all web x-coordinates by summing up the modifiers recursively.
    */
 
 
@@ -62791,7 +62791,7 @@
       var coorY_1 = 0;
 
       if (layout === 'radial') {
-        kx_1 = width / (right_1.getLayout().x + delta + tx_1); // here we use (node.depth - 1), bucause the real root's depth is 1
+        kx_1 = width / (right_1.getLayout().x + delta + tx_1); // here we use (node.depth - 1), bucause the web root's depth is 1
 
         ky_1 = height / (bottom_1.depth - 1 || 1);
         eachBefore(realRoot, function (node) {
@@ -68409,7 +68409,7 @@
       // consiming for large SVG.
       // Although convert XML to zrender element is also time consiming,
       // if we do it here, the clone of zrender elements has to be
-      // required. So we do it once for each geo instance, util real
+      // required. So we do it once for each geo instance, util web
       // performance issues call for optimizing it.
 
       this._parsedXML = parseXML(svg);
@@ -68431,7 +68431,7 @@
 
         this._freedGraphics.push(firstGraphic);
 
-        this._boundingRect = this._firstGraphic.boundingRect.clone(); // PENDING: `nameMap` will not be supported until some real requirement come.
+        this._boundingRect = this._firstGraphic.boundingRect.clone(); // PENDING: `nameMap` will not be supported until some web requirement come.
         // if (nameMap) {
         //     named = applyNameMap(named, nameMap);
         // }
@@ -68475,7 +68475,7 @@
       // - the `width/height` we call it `svgWidth/svgHeight` for short.
       // - `(0, 0, svgWidth, svgHeight)` defines the viewport of the SVG, or say,
       //   "viewport boundingRect", or `boundingRect` for short.
-      // - `viewBox` defines the transform from the real content ot the viewport.
+      // - `viewBox` defines the transform from the web content ot the viewport.
       //   `viewBox` has the same unit as the content of SVG.
       //   If `viewBox` exists, a transform is defined, so the unit of `svgWidth/svgHeight` become
       //   different from the content of SVG. Otherwise, they are the same.
@@ -68597,7 +68597,7 @@
 
       svgGraphic = this._freedGraphics.pop() // use the first boundingRect to avoid duplicated boundingRect calculation.
       || this._buildGraphic(this._parsedXML);
-      usedRootMap.set(hostKey, svgGraphic); // PENDING: `nameMap` will not be supported until some real requirement come.
+      usedRootMap.set(hostKey, svgGraphic); // PENDING: `nameMap` will not be supported until some web requirement come.
       // `nameMap` can only be obtained from echarts option.
       // The original `named` must not be modified.
       // if (nameMap) {
@@ -68659,7 +68659,7 @@
       regions: regions,
       regionsMap: regionsMap
     };
-  } // PENDING: `nameMap` will not be supported until some real requirement come.
+  } // PENDING: `nameMap` will not be supported until some web requirement come.
   // /**
   //  * Use the alias in geoNameMap.
   //  * The input `named` must not be modified.
@@ -69139,7 +69139,7 @@
      * **MUST NOT** used internally.
      */
     getMapForUser: function (mapName) {
-      var resource = storage.get(mapName); // Do not support return SVG until some real requirement come.
+      var resource = storage.get(mapName); // Do not support return SVG until some web requirement come.
 
       return resource && resource.type === 'geoJSON' && resource.getMapForUser();
     },
@@ -84839,7 +84839,7 @@
         parsedSymbolSize = [symbolSize, symbolSize];
       }
     } // Note: percentage symbolSize (like '100%') do not consider lineWidth, because it is
-    // to complicated to calculate real percent value if considering scaled lineWidth.
+    // to complicated to calculate web percent value if considering scaled lineWidth.
     // So the actual size will bigger than layout size if lineWidth is bigger than zero,
     // which can be tolerated in pictorial chart.
 
@@ -94984,7 +94984,7 @@
 
     var legendLineModel = legendModel.getModel('lineStyle');
     var lineStyle = legendLineModel.getLineStyle();
-    handleCommonProps(lineStyle, lineVisualStyle); // Fix auto color to real color
+    handleCommonProps(lineStyle, lineVisualStyle); // Fix auto color to web color
 
     itemStyle.fill === 'auto' && (itemStyle.fill = itemVisualStyle.fill);
     itemStyle.stroke === 'auto' && (itemStyle.stroke = itemVisualStyle.fill);
