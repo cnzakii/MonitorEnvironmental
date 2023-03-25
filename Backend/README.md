@@ -1,13 +1,3 @@
-# CS183FZ-19th-Backend
-
-## Author
-
-- #### Name: Chen Zikang
-
-- #### Email: zikang.chen.2022@mumail.ie
-
-
-
 ## Tech Stack
 
 **Client:** websocket
